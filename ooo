@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/semantic.css">
+    <script src="css/jquery-3.3.1.min.js"></script>
+    <script src="css/exporting.js"></script>
+    <script src="css/highcharts.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div class="ui vertical segment">
+      <div class="ui grid">
+        <div class="ten wide column">
+          <div  id="chart1" style="clear:both;min-width:300px;height:500px"></div>
+        </div>
+
+        <div class="six wide column">
+          <h2 class="ui header">
+            <i class="icon food"></i>
+            标题
+          </h2>
+          内容
+        </div>
+      </div>
+    </div>
+    <script>
+    $(function () {
+  $('#chart1').highcharts({
+      chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+      },
+      title: {
+          text: '武汉市美食价格分布'
+      },
+      tooltip: {
+          headerFormat: '{series.name}<br>',
+          pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+      },
+      plotOptions: {
+          pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                  enabled: true,
+                  format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                  style: {
+                      color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                  }
+              }
+          }
+      },
+      series: [{
+          type: 'pie',
+          name: '武汉市美食价格分布',
+          data: [
+              ['0-15',   15.6],
+              ['15-40',       36.7],
+              {
+                  name: '40-100',
+                  y: 44.1,
+                  sliced: true,
+                  selected: true
+              },
+              ['100-200',    3.0],
+              ['200以上',     0.6],
+
+          ]
+      }]
+  });
+});
+    </script>
+  </body>
+</html>

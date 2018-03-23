@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>区域美食热度&价格对比</title>
+    <link rel="stylesheet" href="css/semantic.css">
+    <link rel="stylesheet" href="baiducss/index_7269dbe.css">
+    <link rel="stylesheet" href="baiducss/common_aa19521.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/exporting.js"></script>
+    <script src="js/highcharts.js"></script>
+    <script src="js/highcharts-3d.js"></script>
+    <script src="baiducss/hm.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "baiducss/hm.js";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script src="baiducss/hm.js"></script>
+
+  </head>
+  <body>
+    <div class="ui vertical basic segment">
+      <div class="ui fixed inverted menu">
+        <a href="主网页.html" class="item">返回</a>
+      </div>
+    </div>
+    <div class="ui vertical basic segment">
+      <div class="ui grid">
+        <div class="ten wide column">
+          <img src="img/111.jpg" width="100%" alt="" />
+        </div>
+        <div class="six wide column">
+          <div class="ui very padded basic segment">
+          <h2 class="ui header">
+            区域美食热度分析
+          </h2>
+          <font size="4">
+          为了清楚的对每个区的美食情况进行比较，我们综合了各个区的饭店数量与每个商家的评论数量两个因素，计算出了每个区的美食指数，并根据该指数绘制出了如图所示的美食热度图。颜色越深，代表该地区的美食指数越大，相应的饭店数量就越多并且在该地区消费的人数也越多，从图中可以看出，结合了两个因素后的热度排名前三是洪山区，江汉区和武昌区。
+          </font>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="ui vertical basic segment">
+      <div class="ui grid">
+        <div class="ten wide column">
+          <div id="container"></div>
+        </div>
+        <div class="six wide column">
+          <div class="ui very padded basic segment">
+          <h2 class="ui header">
+            价格对比分析
+          </h2>
+          <font size="4">
+          一个地区的美食价格水平，可以一定程度上反映出该地区的居民消费情况，区域地价和工资水平。在剔除了数据中人均价格为零的商家后（无效数据），我们绘制出了武汉各个区美食平均价格的柱状图，从图中可以看出江岸区平均价格最高，江汉区次之，武昌区第三。
+          </font>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    $(function () {
+  // Set up the chart
+  var chart = new Highcharts.Chart({
+      chart: {
+          renderTo: 'container',
+          type: 'column',
+          options3d: {
+              enabled: true,
+              alpha: 15,
+              beta: 15,
+              depth: 50,
+              viewDistance: 25
+          }
+      },
+      title: {
+          text: '武汉市各区美食平均消费价格图'
+      },
+
+      xAxis: {
+            categories: [
+                '蔡甸区',
+                '东西湖区',
+                '汉南区',
+                '汉阳区',
+                '洪山区',
+                '黄陂区',
+                '江岸区',
+                '江汉区',
+                '江夏区',
+                '硚口区',
+                '青山区',
+                '武昌区',
+                '新洲区'
+            ],
+        },
+      plotOptions: {
+          column: {
+              depth: 25
+          }
+      },
+      series: [{
+          name:'平均消费价格',
+          data: [
+            {
+              name:'蔡甸区',
+              y:34.75
+            },
+            {
+              name:'东西湖区',
+              y:32.30
+            },
+            {
+              name:'汉南区',
+              y:15.29
+            },
+            {
+              name:'汉阳区',
+              y:39.37
+            },
+            {
+              name:'洪山区',
+              y:45.94
+            },
+            {
+              name:'黄陂区',
+              y:28.61
+            },
+            {
+              name:'江岸区',
+              y:53.75
+            },
+            {
+              name:'江汉区',
+              y:50.98
+            },
+            {
+              name:'江夏区',
+              y:30.01
+            },
+            {
+              name:'硚口区',
+              y:40.19
+            },
+            {
+              name:'青山区',
+              y:32.11
+            },
+            {
+              name:'武昌区',
+              y:50.40
+            },
+            {
+              name:'新洲区',
+              y:28.60
+            }
+          ]
+      }]
+  });
+})
+    </script>
+    <div class="ui very padded vertical inverted segment">
+      <div class="ui very tiny center aligned header">
+        本站内容来自互联网，如有侵权请联系站长删除！
+      </div>
+    </div>
+  </body>
+</html>

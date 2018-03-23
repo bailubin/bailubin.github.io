@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>热评&价格区间分布</title>
+    <link rel="stylesheet" href="css/semantic.css">
+    <link rel="stylesheet" href="baiducss/index_7269dbe.css">
+    <link rel="stylesheet" href="baiducss/common_aa19521.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/exporting.js"></script>
+    <script src="js/highcharts.js"></script>
+    <script src="js/wordcloud.js"></script>
+    <script src="baiducss/hm.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "baiducss/hm.js";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script src="baiducss/hm.js"></script>
+
+  </head>
+  <body>
+    <div class="ui vertical basic segment">
+      <div class="ui fixed inverted menu">
+        <a href="主网页.html" class="item">返回</a>
+      </div>
+    </div>
+    <div class="ui vertical basic segment">
+      <div class="ui grid">
+        <div class="ten wide column">
+          <div id="container" ></div>
+        </div>
+        <div class="six wide column">
+          <div class="ui very padded basic segment">
+          <h2 class="ui header">
+            热评分析
+          </h2>
+          <font size="4">
+          无论是商家还是消费者，美食的评论都会对他们的决策产生重大的影响。对于商家，关注消费者的评论有助于自己改正不足的地方，帮助自己的不断推陈出新；对于消费者，一家店铺的评价很有可能左右他的消费倾向。从右面的词云图中我们可以看到回头客数量最多，高达20万，这说明一家店铺在第一次能够给消费者带来良好的消费体验之后，消费者回购的可能性很大。而消费者对一家店铺，首先关注的是它的味道和卫生状况，之后是它的服务和环境，除此之外还有性价比，交通状况，菜品质量等。
+          </font>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="ui vertical basic segment">
+      <div class="ui grid">
+        <div class="ten wide column">
+          <div id="ciyun" ></div>
+        </div>
+        <div class="six wide column">
+          <div class="ui very padded basic segment">
+          <h2 class="ui header">
+            美食价格分布分析
+          </h2>
+          <font size="4">
+          右边的饼图清晰的反映出了武汉美食的价格区间分布可以看出价格大致满足正态分布，主要集中在15-100元之间。结合美食的类别，平均价格15以下多为小吃快餐，15-100之间多为连锁餐厅或中级餐厅，100以上多为酒吧或者高级餐厅。
+          </font>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script>
+    $(function () {
+  $('#ciyun').highcharts({
+      chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+      },
+      title: {
+          text: '武汉市美食价格分布'
+      },
+      tooltip: {
+          headerFormat: '{series.name}<br>',
+          pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+      },
+      plotOptions: {
+          pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                  enabled: true,
+                  format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                  style: {
+                      color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                  }
+              }
+          }
+      },
+      series: [{
+          type: 'pie',
+          name: '武汉市美食价格分布',
+          data: [
+              ['0-15元',   15.6],
+              ['15-40元',       36.7],
+              {
+                  name: '40-100',
+                  y: 44.1,
+                  sliced: true,
+                  selected: true
+              },
+              ['100-200元',    3.0],
+              ['200元以上',     0.6],
+
+          ]
+      }]
+  });
+});
+    </script>
+    <script>
+    Highcharts.chart('container', {
+    series: [{
+        type: 'wordcloud',
+        data:[
+            {
+                name:'回头客',
+                weight:244916
+            },
+            {
+                name:'干净卫生',
+                weight:83740
+            },
+            {
+                name:'上菜快',
+                weight:59463
+            },
+            {
+                name:'有萌宠',
+                weight:1598
+            },
+            {
+                name:'朋友聚餐',
+                weight:28879
+            },
+            {
+                name:'闺蜜聚会',
+                weight:16484
+            },
+            {
+                name:'家庭聚餐',
+                weight:14953
+            },
+            {
+                name:'公司聚餐',
+                weight:12790
+            },
+            {
+                name:'请客',
+                weight:1817
+            },
+            {
+                name:'不推荐',
+                weight:12040
+            },
+            {
+                name:'现做外卖',
+                weight:4568
+            },
+            {
+                name:'下午茶',
+                weight:5519
+            },
+            {
+                name:'纯原创',
+                weight:14000
+            },
+            {
+                name:'文艺清新',
+                weight:7800
+            },
+            {
+                name:'海鲜棒',
+                weight:12646
+            },
+            {
+                name:'撸串圣地',
+                weight:15012
+            },
+            {
+                name:'深夜食堂',
+                weight:8100
+            },
+            {
+                name:'味道赞',
+                weight:229414
+            },
+            {
+                name:'菜品不错',
+                weight:44287
+            },
+            {
+                name:'分量足',
+                weight:28810
+            },
+            {
+                name:'牛肉赞',
+                weight:12131
+            },
+            {
+                name:'冬天吃过瘾',
+                weight:11320
+            },
+            {
+                name:'肉类好',
+                weight:20539
+            },
+            {
+                name:'分量少',
+                weight:25022
+            },
+            {
+                name:'主食赞',
+                weight:6270
+            },
+            {
+                name:'上菜慢',
+                weight:18559
+            },
+            {
+                name:'菜品健康',
+                weight:15071
+            },
+            {
+                name:'价格高',
+                weight:4118
+            },
+            {
+                name:'主食差',
+                weight:208
+            },
+            {
+                name:'工作餐',
+                weight:156
+            },
+            {
+                name:'性价比高',
+                weight:34144
+            },
+            {
+                name:'饮品赞',
+                weight:9516
+            },
+            {
+                name:'价格实惠',
+                weight:19753
+            },
+            {
+                name:'羊肉',
+                weight:2560
+            },
+            {
+                name:'服务热情',
+                weight:79012
+            },
+            {
+                name:'点心好',
+                weight:16598
+            },
+            {
+                name:'停车方便',
+                weight:3200
+            },
+            {
+                name:'体验很棒',
+                weight:21112
+            },
+
+            {
+                name:'有表演',
+                weight:8686
+            },
+            {
+                name:'高大上',
+                weight:18319
+            },
+            {
+                name:'点心差',
+                weight:84
+            },
+            {
+                name:'菜品丰富',
+                weight:12330
+            },
+            {
+                name:'价格适中',
+                weight:9000
+            },
+            {
+                name:'环境优雅',
+                weight:42096
+            },
+            {
+                name:'弄堂小店',
+                weight:3970
+            },
+            {
+                name:'晚餐',
+                weight:3
+            },
+            {
+                name:'情侣约会',
+                weight:14111
+            },
+            {
+                name:'带娃吃饭',
+                weight:13121
+            },
+            {
+                name:'交通便利',
+                weight:27315
+            },
+            {
+                name:'放松舒服',
+                weight:12324
+            },
+            {
+                name:'氛围好',
+                weight:12306
+            },
+            {
+                name:'打折',
+                weight:49025
+            },
+            {
+                name:'菜品新颖',
+                weight:22252
+            },
+            {
+                name:'厨师专业',
+                weight:16201
+            },
+            {
+                name:'有颜值',
+                weight:22179
+            },
+            {
+                name:'摆盘精美',
+                weight:3381
+            },
+            {
+                name:'复古',
+                weight:2286
+            },
+            {
+                name:'桌椅舒服',
+                weight:4233
+            },
+        ]
+    }],
+    title: {
+        text: '词云图'
+    }
+});
+    </script>
+    <div class="ui very padded vertical inverted segment">
+      <div class="ui very tiny center aligned header">
+        本站内容来自互联网，如有侵权请联系站长删除！
+      </div>
+    </div>
+  </body>
+</html>
